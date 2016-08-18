@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_room.c                                         :+:      :+:    :+:   */
+/*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/18 16:32:36 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/18 16:59:40 by gpotte           ###   ########.fr       */
+/*   Created: 2016/08/18 17:13:21 by gpotte            #+#    #+#             */
+/*   Updated: 2016/08/18 17:14:18 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_room	*add_room(t_room *room, char *name, int i)
+void	map_is_valid(t_env *env)
 {
-	t_room *new_room;
-
-	new_room = malloc(sizeof(t_room));
-	new_room->name = ft_strndup(name, i);
-	new_room->next = NULL;
-
-	if (room == NULL)
-		return (new_room);
-	else
-	{
-		t_room	*tmp;
-		tmp = room;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new_room;
-		return (room);
-	}
+	if (!env->start || !env->end)
+		ft_error();
 }

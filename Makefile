@@ -6,13 +6,14 @@
 #    By: gpotte <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/13 14:02:34 by gpotte            #+#    #+#              #
-#    Updated: 2016/08/11 15:50:53 by gpotte           ###   ########.fr        #
+#    Updated: 2016/08/18 17:14:35 by gpotte           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	lem-in
 
-SRC		=	srcs/main.c srcs/parser.c srcs/ft_error.c
+SRC		=	srcs/main.c srcs/parser.c srcs/ft_error.c srcs/add_room.c\
+			srcs/is_valid.c
 
 OBJ		=	$(SRC:.c=.o)
 

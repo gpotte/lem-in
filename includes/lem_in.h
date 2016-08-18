@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 14:07:08 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/18 16:39:09 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:17:10 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,19 @@ typedef	struct			s_env
 	char				*line;
 	int					nb_ant;
 	char				*start;
+	char				*end;
 }						t_env;
 
 /*
 ** FUNCTIONS
 */
 
-	void		parse_map(t_env *env, t_room *room);
+	t_room		*parse_map(t_env *env, t_room *room);
+	void		nb_ants(t_env *env);
 
 	void		ft_error();
 	
-	t_room		add_room(t_room *room, char *name);
+	t_room		*add_room(t_room *room, char *name, int i);
+	
+	void		map_is_valid(t_env *env);
 #endif
