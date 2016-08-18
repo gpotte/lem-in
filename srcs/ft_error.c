@@ -6,14 +6,15 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/11 15:49:20 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/11 15:51:14 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:45:39 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	ft_error()
+void	ft_error(void)
 {
+	ft_putstr_fd(ANSI_RED, 2);
 	ft_putstr_fd("Error", 2);
 	exit(EXIT_FAILURE);
 }

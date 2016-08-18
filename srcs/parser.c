@@ -6,11 +6,12 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:53:18 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/18 17:11:37 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:40:31 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
 t_room	*parse_map(t_env *env, t_room *room)
 {
 	int	i;
@@ -20,7 +21,7 @@ t_room	*parse_map(t_env *env, t_room *room)
 	while (get_next_line(0, &env->line) > 0)
 	{
 		if (!ft_strchr(env->line, ' ') && env->line[0] != '#')
-			break;
+			break ;
 		if (!ft_strcmp(env->line, "##start"))
 			status = 1;
 		if (!ft_strcmp(env->line, "##end"))

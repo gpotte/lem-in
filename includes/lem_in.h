@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 14:07:08 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/18 17:17:10 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:44:52 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 ** DEFINE COLOR
 */
 
-#define ANSI_RED     "\x1b[31m"
-#define ANSI_GREEN   "\x1b[32m"
-#define ANSI_YELLOW  "\x1b[33m"
-#define ANSI_BLUE    "\x1b[34m"
-#define ANSI_MAGENTA "\x1b[35m"
-#define ANSI_CYAN    "\x1b[36m"
-#define ANSI_RESET   "\x1b[0m"
+# define ANSI_RED     "\x1b[31m"
+# define ANSI_GREEN   "\x1b[32m"
+# define ANSI_YELLOW  "\x1b[33m"
+# define ANSI_BLUE    "\x1b[34m"
+# define ANSI_MAGENTA "\x1b[35m"
+# define ANSI_CYAN    "\x1b[36m"
+# define ANSI_RESET   "\x1b[0m"
 
 /*
 ** STRUCTURE DEFINITION
@@ -47,8 +47,8 @@ typedef struct			s_room
 {
 	int					poids;
 	char				*name;
-	struct	s_room		*next;
-	struct	s_linkroom	*link;		
+	struct s_room		*next;
+	struct s_linkroom	*link;
 }						t_room;
 
 typedef	struct			s_env
@@ -63,12 +63,12 @@ typedef	struct			s_env
 ** FUNCTIONS
 */
 
-	t_room		*parse_map(t_env *env, t_room *room);
-	void		nb_ants(t_env *env);
+t_room					*parse_map(t_env *env, t_room *room);
+void					nb_ants(t_env *env);
 
-	void		ft_error();
-	
-	t_room		*add_room(t_room *room, char *name, int i);
-	
-	void		map_is_valid(t_env *env);
+void					ft_error();
+
+t_room					*add_room(t_room *room, char *name, int i);
+
+void					map_is_valid(t_env *env);
 #endif
