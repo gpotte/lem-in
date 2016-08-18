@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 14:07:08 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/11 15:50:19 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/18 16:39:09 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,26 @@
 ** STRUCTURE DEFINITION
 */
 
-typedef	struct	s_linkroom
+typedef	struct			s_linkroom
 {
 	struct s_room		*room;
 	struct s_linkroom	*next;
-}				t_linkroom;
+}						t_linkroom;
 
-typedef struct	s_room
+typedef struct			s_room
 {
-	int			poids;
-	char		*name;
+	int					poids;
+	char				*name;
 	struct	s_room		*next;
-	struct	s_room		*prev;
 	struct	s_linkroom	*link;		
-}				t_room;
+}						t_room;
 
-typedef	struct	s_env
+typedef	struct			s_env
 {
-	char		*line;
-	int			nb_ant;
-	struct	s_room		*start;
-	struct	s_room		*end;
-}				t_env;
+	char				*line;
+	int					nb_ant;
+	char				*start;
+}						t_env;
 
 /*
 ** FUNCTIONS
@@ -67,4 +65,6 @@ typedef	struct	s_env
 	void		parse_map(t_env *env, t_room *room);
 
 	void		ft_error();
+	
+	t_room		add_room(t_room *room, char *name);
 #endif
