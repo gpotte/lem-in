@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:21:17 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/18 17:46:17 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/19 11:48:47 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,19 @@ int			main(void)
 	init(&env);
 	nb_ants(&env);
 	room = parse_map(&env, room);
-//	room = parse_pipe(&env, room);
+	room = parse_pipe(&env, room);
 	map_is_valid(&env);
+	while (room)
+	{
+		ft_putstr(room->name);
+		while (room->link)
+		{
+			ft_putstr("---");
+			ft_putstr(room->link->room->name);
+			room->link = room->link->next;
+		}
+		ft_putchar('\n');
+		room = room->next;
+	}
 	return (0);
 }
