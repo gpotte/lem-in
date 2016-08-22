@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:25:23 by gpotte            #+#    #+#             */
-/*   Updated: 2016/06/10 11:29:03 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/19 13:08:05 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *s);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
+int					ft_strisdigit(char *str);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);

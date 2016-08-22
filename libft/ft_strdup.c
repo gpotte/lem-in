@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 17:14:08 by gpotte            #+#    #+#             */
-/*   Updated: 2016/05/17 18:20:34 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/22 15:15:05 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strdup(const char *s1)
 	j = ft_strlen(s1);
 	s2 = ft_strnew(j + 1);
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1[i])
 	{
 		s2[i] = s1[i];
 		i++;

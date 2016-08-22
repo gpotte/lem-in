@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 14:07:08 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/19 11:27:34 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/22 13:49:42 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ struct			s_linkroom
 
 struct			s_room
 {
-	int			poids;
+	int			poid;
 	char		*name;
 	t_room		*next;
 	t_linkroom	*link;
@@ -55,8 +55,11 @@ struct			s_room
 
 typedef	struct	s_env
 {
+	int			poid_max;
 	char		*line;
 	int			nb_ant;
+	int			nb_room;
+	int			weight;
 	char		*start;
 	char		*end;
 }				t_env;
@@ -71,10 +74,14 @@ void			nb_ants(t_env *env);
 
 void			ft_error();
 
-t_room			*add_room(t_room *room, char *name, int i);
+t_room			*add_room(t_room *room, t_env *env, int i);
 t_room			*add_link(t_room *room, char *src, char *dst);
 
 void			map_is_valid(t_env *env);
 
 t_room			*find_room(char *name, t_room *room);
+
+t_room			*set_weights(t_env *env, t_room *room);
+t_room			*set_weights2(t_env *env, t_room *room);
+char			**finding_path(t_env *env, t_room *room);
 #endif

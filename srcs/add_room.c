@@ -6,22 +6,24 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/18 16:32:36 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/19 11:52:59 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/19 13:59:12 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_room	*add_room(t_room *room, char *name, int i)
+t_room	*add_room(t_room *room, t_env *env, int i)
 {
 	t_room	*new_room;
 	t_room	*tmp;
 
 	if (!(new_room = (t_room *)malloc(sizeof(t_room))))
 		ft_error();
-	new_room->name = ft_strndup(name, i);
+	env->nb_room++;
+	new_room->name = ft_strndup(env->line, i);
 	new_room->link = NULL;
 	new_room->next = NULL;
+	new_room->poid = 0;
 	if (!room)
 		return (new_room);
 	else
@@ -41,7 +43,7 @@ t_room	*add_link(t_room *room, char *src, char *dst)
 	t_room		*tmp;
 	t_room		*tmp2;
 
-	if (!(tmp2 = find_room(dst, room)))
+	if (!(tmp2 = find_room(dst, room)) || !ft_strcmp(src, dst))
 		ft_error();
 	if (!(tmp = find_room(src, room)))
 		ft_error();

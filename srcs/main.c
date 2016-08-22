@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:21:17 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/19 11:48:47 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/22 15:57:49 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,55 @@ static void	init(t_env *env)
 	env->nb_ant = 0;
 	env->start = NULL;
 	env->end = NULL;
+	env->weight = 0;
+}
+
+void	print_map(t_room *room)
+{
+	t_room *tmp;
+
+	tmp = room;
+	while (tmp)
+	{
+		ft_putstr(tmp->name);
+		ft_putchar('(');
+		ft_putnbr(tmp->poid);
+		ft_putchar(')');
+		while (tmp->link)
+		{
+			ft_putstr("---");
+			ft_putstr(tmp->link->room->name);
+			ft_putchar('(');
+			ft_putnbr(tmp->link->room->poid);
+			ft_putchar(')');
+			tmp->link = tmp->link->next;
+		}
+		ft_putchar('\n');
+		tmp = tmp->next;
+	}
 }
 
 int			main(void)
 {
+	char	**path;
+	int		i;
 	t_env	env;
 	t_room	*room;
 
+	i = 0;
 	room = NULL;
 	init(&env);
 	nb_ants(&env);
 	room = parse_map(&env, room);
 	room = parse_pipe(&env, room);
 	map_is_valid(&env);
-	while (room)
+	room = set_weights(&env, room);
+//	print_map(room);
+	path = finding_path(&env, room);
+	while (path[i])
 	{
-		ft_putstr(room->name);
-		while (room->link)
-		{
-			ft_putstr("---");
-			ft_putstr(room->link->room->name);
-			room->link = room->link->next;
-		}
-		ft_putchar('\n');
-		room = room->next;
+		ft_putendl(path[i]);
+		i++;
 	}
 	return (0);
 }

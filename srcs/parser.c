@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:53:18 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/19 11:43:05 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/22 14:18:17 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static t_room	*first_turn(t_env *env, t_room *room)
 	{
 		pipe = ft_strsplit(env->line, '-');
 		room = add_link(room, pipe[0], pipe[1]);
+		room = add_link(room, pipe[1], pipe[0]);
 		free(pipe[0]);
 		free(pipe[1]);
 		free(pipe);
@@ -33,6 +34,8 @@ static t_room	*first_turn(t_env *env, t_room *room)
 void			nb_ants(t_env *env)
 {
 	if (get_next_line(0, &env->line) < 1)
+		ft_error();
+	if (!ft_strisdigit(env->line))
 		ft_error();
 	if ((env->nb_ant = ft_atoi(env->line)) < 1)
 		ft_error();
@@ -56,7 +59,7 @@ t_room			*parse_map(t_env *env, t_room *room)
 		if (env->line[0] != '#')
 		{
 			i = ft_strchr(env->line, ' ') - env->line;
-			room = add_room(room, env->line, i);
+			room = add_room(room, env, i);
 			if (status == 1)
 				env->start = ft_strndup(env->line, i);
 			if (status == 2)
@@ -82,6 +85,7 @@ t_room			*parse_pipe(t_env *env, t_room *room)
 		{
 			pipe = ft_strsplit(env->line, '-');
 			room = add_link(room, pipe[0], pipe[1]);
+			room = add_link(room, pipe[1], pipe[0]);
 			free(pipe[0]);
 			free(pipe[1]);
 			free(pipe);
