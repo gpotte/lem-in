@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:21:17 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/22 15:57:49 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/23 11:46:02 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,16 @@ int			main(void)
 
 	i = 0;
 	room = NULL;
+	path = NULL;
 	init(&env);
 	nb_ants(&env);
 	room = parse_map(&env, room);
 	room = parse_pipe(&env, room);
 	map_is_valid(&env);
 	room = set_weights(&env, room);
-//	print_map(room);
-	path = finding_path(&env, room);
+	path = finding_path(&env, room, path);
+	print_map(room);
 	while (path[i])
-	{
-		ft_putendl(path[i]);
-		i++;
-	}
+		ft_putendl(path[i++]);
 	return (0);
 }
