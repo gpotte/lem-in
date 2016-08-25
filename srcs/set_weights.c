@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 13:23:09 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/22 13:17:31 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/25 10:45:25 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@ static t_room	*set_unlinked_room(t_env *env, t_room *room)
 	t_room		*tmp;
 
 	tmp = room;
+	if (env->poid_max >= env->nb_room + 10)
+		ft_error();
 	while (tmp)
 	{
-		if (tmp->poid == -1)
+		if (tmp->poid == 0)
+			env->weight++;
+		if (tmp->poid == -1 || tmp->poid == 0)
 			tmp->poid = env->poid_max + 1;
 		tmp = tmp->next;
 	}
@@ -46,7 +50,7 @@ t_room			*set_weights(t_env *env, t_room *room)
 	t_room		*tmp;
 
 	room = set_end_weight(env, room);
-	while (env->weight < env->nb_room)
+	while (env->weight < env->nb_room && env->poid_max < env->nb_room + 10)
 	{
 		tmp = room;
 		while (tmp)
@@ -58,11 +62,12 @@ t_room			*set_weights(t_env *env, t_room *room)
 			}
 			else if (!tmp->poid)
 				tmp = set_weights2(env, tmp);
+			if (!ft_strcmp(tmp->name, env->start) && tmp->poid > 0)
+				room = set_unlinked_room(env, room);
 			tmp = tmp->next;
 		}
 		env->poid_max++;
 	}
-	room = set_unlinked_room(env, room);
 	return (room);
 }
 

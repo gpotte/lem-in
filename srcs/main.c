@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:21:17 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/23 11:46:02 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/25 10:53:10 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	init(t_env *env)
 	env->weight = 0;
 }
 
-void	print_map(t_room *room)
+void		print_map(t_room *room)
 {
 	t_room *tmp;
 

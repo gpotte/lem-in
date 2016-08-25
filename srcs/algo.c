@@ -6,13 +6,13 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 13:34:59 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/23 11:43:26 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/25 10:52:28 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-char **finding_path(t_env *env, t_room *room, char **path)
+char	**finding_path(t_env *env, t_room *room, char **path)
 {
 	int			i;
 	t_room		*tmp;
@@ -21,23 +21,22 @@ char **finding_path(t_env *env, t_room *room, char **path)
 
 	tmp = room;
 	i = 0;
-	path = (char **)malloc(sizeof(char *) * size_of_path(env, room) + 1);
+	if (!(path = (char **)malloc(sizeof(char *) * size_of_path(env, room) + 1)))
+		ft_error();
 	while (ft_strcmp(tmp->name, env->start))
 		tmp = tmp->next;
 	while (ft_strcmp(tmp->name, env->end))
 	{
-		path[i] = ft_strdup(tmp->name);
+		path[i++] = ft_strdup(tmp->name);
 		tmp_link = tmp->link;
 		link_index = tmp->link;
 		while (link_index)
 		{
-			if (link_index->room->poid < tmp_link->room->poid)
-				while (tmp_link->room->poid > link_index->room->poid)
-					tmp_link = tmp_link->next;
+			while (tmp_link->room->poid > link_index->room->poid)
+				tmp_link = tmp_link->next;
 			link_index = link_index->next;
 		}
 		tmp = tmp_link->room;
-		i++;
 	}
 	path[i] = ft_strdup(tmp->name);
 	path[i + 1] = NULL;
