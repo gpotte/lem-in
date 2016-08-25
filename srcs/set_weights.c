@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 13:23:09 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/25 10:45:25 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/25 11:17:30 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_room	*set_end_weight(t_env *env, t_room *room)
 	tmp2 = room->link;
 	while (ft_strcmp(tmp->name, env->end))
 		tmp = tmp->next;
+	if (!tmp->link)
+		ft_error();
 	env->weight = 1;
 	tmp->poid = 1;
 	env->poid_max = 1;

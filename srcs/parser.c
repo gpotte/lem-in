@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:53:18 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/22 14:18:17 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/25 11:16:32 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static t_room	*first_turn(t_env *env, t_room *room)
 		free(pipe[1]);
 		free(pipe);
 	}
+	ft_putendl(env->line);
 	free(env->line);
 	return (room);
 }
@@ -39,6 +40,7 @@ void			nb_ants(t_env *env)
 		ft_error();
 	if ((env->nb_ant = ft_atoi(env->line)) < 1)
 		ft_error();
+	ft_putendl(env->line);
 	free(env->line);
 }
 
@@ -47,7 +49,6 @@ t_room			*parse_map(t_env *env, t_room *room)
 	int	i;
 	int	status;
 
-	status = 0;
 	while (get_next_line(0, &env->line) > 0)
 	{
 		if (!ft_strchr(env->line, ' ') && env->line[0] != '#')
@@ -66,6 +67,7 @@ t_room			*parse_map(t_env *env, t_room *room)
 				env->end = ft_strndup(env->line, i);
 			status = 0;
 		}
+		ft_putendl(env->line);
 		free(env->line);
 	}
 	return (room);
@@ -90,6 +92,7 @@ t_room			*parse_pipe(t_env *env, t_room *room)
 			free(pipe[1]);
 			free(pipe);
 		}
+		ft_putendl(env->line);
 		free(env->line);
 	}
 	return (room);

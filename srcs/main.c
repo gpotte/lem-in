@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:21:17 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/25 10:53:10 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/25 11:17:55 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,25 @@ static void	init(t_env *env)
 	env->start = NULL;
 	env->end = NULL;
 	env->weight = 0;
+	env->poid_max = 0;
 }
 
-void		print_map(t_room *room)
+void		print_path(char **path, t_env *env)
 {
-	t_room *tmp;
+	int		ant;
+	int		room;
 
-	tmp = room;
-	while (tmp)
+	ant = 1;
+	ft_putchar('\n');
+	while (ant <= env->nb_ant)
 	{
-		ft_putstr(tmp->name);
-		ft_putchar('(');
-		ft_putnbr(tmp->poid);
-		ft_putchar(')');
-		while (tmp->link)
+		room = 0;
+		while (path[room])
 		{
-			ft_putstr("---");
-			ft_putstr(tmp->link->room->name);
-			ft_putchar('(');
-			ft_putnbr(tmp->link->room->poid);
-			ft_putchar(')');
-			tmp->link = tmp->link->next;
+			ft_putstr(ft_strjoin("L", ft_itoa(ant)));
+			ft_putendl(ft_strjoin("-", path[room++]));
 		}
-		ft_putchar('\n');
-		tmp = tmp->next;
+		ant++;
 	}
 }
 
@@ -62,8 +57,6 @@ int			main(void)
 	map_is_valid(&env);
 	room = set_weights(&env, room);
 	path = finding_path(&env, room, path);
-	print_map(room);
-	while (path[i])
-		ft_putendl(path[i++]);
+	print_path(path, &env);
 	return (0);
 }
