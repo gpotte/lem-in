@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 13:21:17 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/25 11:17:55 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/29 09:17:23 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ void		print_path(char **path, t_env *env)
 int			main(void)
 {
 	char	**path;
-	int		i;
 	t_env	env;
 	t_room	*room;
 
-	i = 0;
 	room = NULL;
 	path = NULL;
 	init(&env);
@@ -56,7 +54,7 @@ int			main(void)
 	room = parse_pipe(&env, room);
 	map_is_valid(&env);
 	room = set_weights(&env, room);
-	path = finding_path(&env, room, path);
+	path = finding_path(&env, room, path, 0);
 	print_path(path, &env);
 	return (0);
 }

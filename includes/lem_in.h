@@ -6,7 +6,7 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 14:07:08 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/23 11:44:18 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/29 09:16:44 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ t_room			*set_weights(t_env *env, t_room *room);
 t_room			*set_weights2(t_env *env, t_room *room);
 
 int				size_of_path(t_env *env, t_room *room);
-char			**finding_path(t_env *env, t_room *room, char **path);
+char			**finding_path(t_env *env, t_room *room, char **path, int i);
 #endif

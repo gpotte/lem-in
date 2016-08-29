@@ -6,21 +6,19 @@
 /*   By: gpotte <gpotte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 13:34:59 by gpotte            #+#    #+#             */
-/*   Updated: 2016/08/25 10:52:28 by gpotte           ###   ########.fr       */
+/*   Updated: 2016/08/29 09:16:30 by gpotte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-char	**finding_path(t_env *env, t_room *room, char **path)
+char	**finding_path(t_env *env, t_room *room, char **path, int i)
 {
-	int			i;
 	t_room		*tmp;
 	t_linkroom	*tmp_link;
 	t_linkroom	*link_index;
 
 	tmp = room;
-	i = 0;
 	if (!(path = (char **)malloc(sizeof(char *) * size_of_path(env, room) + 1)))
 		ft_error();
 	while (ft_strcmp(tmp->name, env->start))
